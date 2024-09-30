@@ -1,0 +1,163 @@
+
+Screenshot
+-----------
+
+ getScreenshotAs(OutputType.FILE)
+
+1.  Full page Screenshot 
+      TakeScreenshot ts = (TakeScreenshot)driver ;
+
+2. Capture ss and stored in variable
+       File sourceFile = ts.getScreenshotAs(OutputType.FILE); 
+
+3. Create folder in project directory and pass it as argument
+       File targetFile = new File(System.getProperty("user.dir")+"\\screenshot\\fullpage.png");
+
+4. Copy sourceFile to targetFile
+      sourceFile.renameTo(TargetFile);
+
+
+Capture SS of specific section
+----------------------------
+
+1.  WebElement webelement = driver.findElement(By.xpath(""));
+  
+2.  File sourceFile = webelement.getScreenshotAs(OutputType.FILE); 
+
+3.  File targetFile = new File(System.getProperty("user.dir")+"\\screenshot\\fullpage.png");
+
+4.  sourceFile.renameTo(TargetFile);
+
+=========================================
+ChromeOPtions
+EdgeOptions
+FirefoxOptions
+etc. ......
+
+
+1) Headless testing
+----------------
+1. addArguments("--headless=new");
+
+To run testcases without showing UI
+
+// ChromeOptions option = new ChromeOptions();
+// option.addArguments("--headless=new");		- setting for headless mode execution.
+// WebDriver driver=new ChromeDriver(option);
+
+adv.
+1. can execute mulitple task
+2. faster execution
+3. user can't see the actions on page
+
+=====================================
+
+2) SSL handling (Secure Socket layer)
+-------------------------------
+1. setAcceptInsecureCerts(true);
+
+//  ChromeOptions option = new ChromeOptions();
+//  option.setAcceptInsecureCerts(true);		-- accept SSL certificates
+
+
+3) To remove "Chrome is being controlled by Automated test"
+------------------------------------------------------
+1. setExperimentalOption(String, arr obj)
+
+//  ChromeOptions option = new ChromeOptions();
+//  option.setExperimentalOption("excludeSwitches",new String[]{"enable-automation"});
+// WebDriver driver=new ChromeDriver(option);
+
+
+4) To run Incognito mode
+---------------------
+1. addArguments("--incognito");
+
+// ChromeOptions option = new ChromeOptions();
+// option.addArguments("--incognito");
+
+
+5) To Enable Extention at Runtime in browser
+-----------------------------
+
+1. Add CRX extractor/downloader to chrome browser - can get any crx file for any plugin
+2. Add selectorsHub plugin to chrome browser
+3. Capture CRX file for selectorsHub extension
+4. pass CRX file in automation script in Chrome Options
+
+
+//  ChromeOptions option = new ChromeOptions();
+//  File file = new File("path of selectorshub");
+//  option.addExtensions(file);
+
+
+To prevent adds on page
+--------------------------------------
+1. Add CRX extractor/downloader to chrome browser - can get any crx file for any plugin
+2. Add AdBlocker plugin to chrome browser
+3. Capture CRX file for selectorsHub extension
+4. pass CRX file in automation script in Chrome Options
+
+
+//  ChromeOptions option = new ChromeOptions();
+//  File file = new File("path of AdBlockers");
+//  option.addExtensions(file);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

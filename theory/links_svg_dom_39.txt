@@ -1,0 +1,102 @@
+
+Broken Links
+-------------
+ - The link doesn't have any resource in the server 
+    that'll retrun status code that should be greater that 400
+
+http://www.deadlinkcity.com/
+
+1. link should have href="https://xyz.com"
+2. "https://xyz.com" --> server --> status code
+3. if  status code >= 400   --> Broken link
+    if  status code < 400     --> not Broken link
+
+1. Capture all Links form web-site
+   //  List<WebElement> links
+
+2. condition for Broken links while iterating links 
+   //  if(hrefValue==null || hrefValue.isEmpty())
+
+3. 
+   // convert href value from string to URL format
+       URL linkURL = new URL(hrefValue);
+   // open connection to the server
+       HttpURLConnection conn = (HttpURLConnection) linkURL.openConnection();
+       conn.connect();
+
+4.
+   //  if(conn.getResponseCode()>=400)
+
+=====================================
+
+
+Shadow DOM
+------------
+
+1. Only css selector used to locate shadow DOM element.
+
+2. From shadow host getting shadow root
+   	            | root        |	Shadow Host	     		          |
+// SearchContext shadow = driver.findElement(By.cssSelector("#shadow-root")).getShadowRoot();
+
+3. From shadow root can get shadow element
+// shadow.findElement(By.cssSelector("#shadow-element"));
+
+-----------------------
+2) Element is iniside 2 nested shadow dom
+
+//  SearchContext shadow1 = driver.findElement(By.cssSelector("#shadow-root")).getShadowRoot();
+//  SearchContext shadow2 = driver.findElement(By.cssSelector("#inner-shadow-dom")).getShadowRoot();
+//  shadow.findElement(By.cssSelector("#nested-shadow-element"));
+
+-----------------------
+3) Element is iniside 3 nested shadow dom
+
+//  SearchContext shadow1 = driver.findElement(By.cssSelector("#shadow-root")).getShadowRoot();
+//  SearchContext shadow2 = driver.findElement(By.cssSelector("#inner-shadow-dom")).getShadowRoot();
+//  SearchContext shadow3 = driver.findElement(By.cssSelector("#nested-shadow-dom")).getShadowRoot();
+//  shadow.findElement(By.cssSelector("#multi-nested-shadow-element"));
+
+==========================================================
+
+Handle SVG element eg. icon
+-------------------
+*[name()='svg'] - use this to locate svg 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

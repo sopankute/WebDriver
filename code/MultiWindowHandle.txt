@@ -1,0 +1,29 @@
+
+MultiWindowHandle
+
+parentWindow
+	1.type textareafield |  id '#ta1'
+	> Happy Independance Day
+	[textAreaField].sendKeys()
+	
+	2.click pop-up button | linktext - Open a popup window
+	[popUpButton].click()
+
+popUpFirstChildWindow
+	driver.switchTo().window(popUpFirstChildWindow)
+	get text  | cssSelector - div[class='example'] h3
+
+newTabSecondChildWindow
+	driver.switchTo().window(newTabSecondChildWindow)
+	sign in |  cssSelector - a[class='sign-in ga-header-sign-in'] span
+
+
+driver.switchTo().window(parentWindow)
+
+--------------------------------------
+
+parentWindow  -->  popUpFirstWindow -->  newTabSecondWindow --> parentWindow
+
+switch to window
+
+set = driver.getWindowsHandles()

@@ -1,0 +1,74 @@
+	
+Drop Down
+----------
+
+1.  Select Dropdown
+2. Bootstrap Dropdown
+3. Hidden Dropdown
+
+
+1.  Select Dropdown
+------------------
+
+Select - Class
+
+selectByVisibleText()
+selectByValue()
+selectByIndex()
+
+--------------------
+can access all dropdown options using 
+getOptions()	- return List<WebElement> all Options from Dropdown
+
+1. Try to get xPath which cover all the Dropdown options.
+2. Using List<WebElement> count the No of Options it contains.
+3. Print all them using getText().
+
+
+Auto Suggest DropDown
+-----------------------
+xpath - to collect all options
+
+"//div[@class='erkvQe']//ul[@role='listbox']//li//div[@role='option']
+
+======================================
+
+Bootsrap dropdown
+-------------------
+
+1. get xpath to click 
+2. get xpath to access the each and all elements and click 
+    List<WebElement>
+    use for(){} or Iterate 
+    apply if condition for perticular element
+
+======================================
+
+JQuery dropdown
+----------------
+
+1. get xpath to click
+2. get xpath to access the each and all elements, subelements and click 
+     List<WebElement>
+     use for(){} or Iterate 
+     apply if condition for perticular element
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,70 @@
+
+Alert
+-----
+
+Using switchTo()
+----------------
+Alert myAlert = driver.switchTo().alert();	- return Alert Object
+
+ myAlert.accept();	     - close alert
+
+ myAlert.dismiss();	     - close alert
+
+ myAlert.getText();	     - return content
+
+ myAlert.sendKeys();      - fill the input text
+
+
+Using ExplicitWait - using alertIsPresent()
+-----------------
+
+ WebDriverWait myWait = new WebDriverWait(driver, Duration.ofSeconds(10));
+ 
+ Alert myAlert = myWait.until(ExpectedConditions.alertIsPresent());
+
+
+Authenticated Alert
+------------------
+
+https://the-internet.herokuapp.com/basic_auth
+
+https://username:password@the-internet.herokuapp.com/basic_auth
+
+https://admin:admin@the-internet.herokuapp.com/basic_auth
+
+===============================================================
+
+Frames / iFrames
+-------
+
+ can pass 'id/name/index' as argument
+ driver.switchTo().frame(id/name/index)
+
+ driver.switchTo().frame(index)  -> index - 0, 1, 2, 3,....
+
+ Access WebElement and pass it to frame( ) argument, then perform the action on element
+ driver.switchTo().frame(WebElement)	
+
+ Go back to Page
+ driver.switchTo().defaultContent()
+
+
+=============================
+
+driver.switchTo().window()
+
+driver.switchTo().alert()
+
+driver.switchTo().frame()
+
+
+
+
+
+
+
+
+
+
+
+

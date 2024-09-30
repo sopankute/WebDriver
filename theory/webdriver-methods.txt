@@ -1,0 +1,101 @@
+WebDrver Methods
+------------------
+
+get methods - can access through webdriver instance (eg. driver)
+------------
+1.  get("url")	- open url on browser
+2. getTitle()	- return title of page
+3. getCurrentUrl()	- return current page url
+4. getPageSource()	- return source code
+5. getWindowHandle()     - returns ID of single Browser window
+6. getWindowHandles()   - return List of Multiple Browsers window IDs 
+
+conditional methods - accessed through WebElements
+-------------------
+
+return boolean value(T/F)
+1.  isDisplayed()	- check display status of element
+2. isEnabled()	- check enable/disable status of element
+3. isSelected()	- check element is selected/not eg. drop down, checkbox, radio
+
+Browser methods
+-----------------
+
+1.  close()	- close single browser window
+2. quit()	- close all opened browser window
+
+wait methods - to overcome the synchronisation problem 
+-------------
+Problem
+synchronisation - selenium is fast framework. before loading page execute script 
+	              in this situation will get NoSuchElementException.
+
+NoSuchElementException - Element is not present on the page. synchronisation problem.
+ElementNotFoundException - Locator is incorrect (syntax)
+
+Solution
+can overcome the synchronisation problem But not recommended
+
+Thread.sleep(3000)
+------------------
+1.  easy to use
+2. But if mentioned time is not suffitient then agin will get NoSuchElementException
+3. it will wait for max. time out. this reduces performance of script.
+4 could be needed to use multiple times. 
+
+1)  impicit wait
+--------------
+driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
+
+adv:
+1.  one time statement
+2. not wait till max. time if the element available as soon.
+3. applicable for all elements
+4. easy to use
+
+disAdv:
+1. if the time is not suffitient then will get NoSuchElementException.
+
+2) explicit wait/fluent wait
+
+1. Conditional based, it'll work more effectively.
+2. Finding element is inclusive.
+3. it will wait for condition to be true, then consider time.
+4. need to wrie multiple statement for multiple elements.
+
+3) Fluent wait
+
+// Fluent wait declaration
+	Wait<WebDriver> myWait = new FluentWait<WebDriver>(driver)
+		.withTimeout(Duration.ofSeconds(20))
+		.pollingEvery(Duration.ofSeconds(3))
+		.ignoring(NoSuchElementException.class);
+
+// usage
+	WebElement element = myWait.until(new Function<WebDriver, WebElement>() {
+		@Override
+		public WebElement apply(WebDriver input) {
+			// TODO Auto-generated method stub
+			return driver.findElement(By.xpath("//input[@name='username']"));
+		}	
+	 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

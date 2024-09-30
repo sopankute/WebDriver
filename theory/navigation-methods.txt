@@ -1,0 +1,58 @@
+
+Navigational methods
+--------------------
+
+1. navigate().to()	
+2. navigate().back()
+3. navigate().forward()
+4. navigate().refresh()
+
+
+to() vs get()
+
+1. both taking url as String but to() method can take 'URL' object also
+2. internally to() calling get()
+
+-------------------------------------------------
+
+getWindowHandle()
+getWindowHandles()
+
+driver focus switch to child window
+driver.switchTo().window(chiledID);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

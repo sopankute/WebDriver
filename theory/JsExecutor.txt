@@ -1,0 +1,43 @@
+
+JavaScriptExecutor  - Interface | can't create object
+------------------
+
+executeScript - to execute Javascript statement.
+
+ if ElementInterceptedException - click() not able to execute Js code internally.
+ Then execute Js statement directly using executeScript() in webdriver.
+ 
+
+Pass text to inputbox - alternate to sendKeys()
+ 
+1.  WebDriver driver = new ChromeDriver();
+2. JavascriptExecutor js = (JavascriptExecutor) driver;
+3.  js.executeScript("arguments[0].setAttribute('value','Jhone')", inputbox);
+	         // perform action on 2nd parameter                element
+	         // which is web element
+
+=============================================================
+
+Scrolling Pages
+---------------
+1) Scrolling page down
+  js.executeScript("window.scrollBy(0, 1500) ", "");
+
+2) Scrolling page down
+  WebElement btn1 = driver.findElement(By.xpath("//a[normalize-space()='1']"));
+  js.executeScript("arguments[0].scrollIntoView();", btn1);
+
+3) Scrolling page down
+  js.executeScript("window.scrollBy(0, document.body.scrollHeight)");
+
+4) Scrolling page above
+  js.executeScript("window.scrollBy(0, -document.body.scrollHeight)");
+		
+
+Upload files
+-----------
+ - if tried to upload 2 files then 2nd file will replace 1st
+
+ To avoid this
+ 1. Store the path of those file in different variables eg. file1 and file2
+ 2. sendKeys(file1 + "\n" + file2)

@@ -1,0 +1,160 @@
+XPath works on the DOM (Document Object Module)
+-----
+
+With single attribute
+	//input[@placeholder='Search']
+
+With multiple attribute
+	//input[@placeholder='Search'][@name='search']
+
+Xpath with "and" operator (Both mandetory)
+	//input[@placeholder='Search' and @name='search']
+
+Xpath with "or" operator (one of them mandetory)
+	//input[@placeholder='Search' or @name='search']
+
+Xpath with text() and  normalize-space()
+	//a[text()='Apple Cinema 30\"]
+	//a[normalize-space()='Apple Cinema 30\"]
+
+Xpath with index
+	(//img[@title='Apple Cinema 30\"'])[1]
+
+Xpath with contains()
+	//a[contains(text(),'Descript')]
+	//a[contains( . ,'Descript')]
+
+Xpath with starts-with()
+	//a[starts-with(@title='App')]
+
+handling Dynamic attributes
+--------------------------
+
+// *[@id='start' or @id='stop']
+// *[contains(@id,'st' ]
+// *[starts-with(@id,'st' )]
+
+chained Xpath(Absolute + Relative)
+--------------
+
+//div[@id='logo']/a/img
+//div[@class='image']/a/img
+
+
+Xpath Axes
+----------
+
+		ancestor::	
+		      |
+		parent
+		      |
+preceding-sibling::	   Self	following-sibling::
+		      |
+		child::  (or)
+		descendent::
+
+1) Parent : 
+
+<form>
+          <input id="txtUsername"></input>
+</form>
+
+1.  //input[@id='txtUsername']/parent :: form    (recommonded)
+2. //input[@id='txtUsername']/parent :: *
+3. //input[@id='txtUsername']/..		( .. instead of ::)
+
+
+2) Child : 
+
+<form>
+    <div  id="divUsername1">
+          <input id="txtUsername2"></input>
+    </div>
+</form>
+
+1.  //div[@id='divUsername1']/child::input
+2.  //div[@id='divUsername1']/input
+
+
+3) Grand Children :
+
+<form id="formusername1">
+    <div  id="divUsername3">
+          <input id="txtUsername4"> </input>
+          <input id="txtUsername5"> </input>
+    </div>
+    <div  id="divUsername2">  </div>
+</form>
+
+1.  //form/*/input
+2.  //form/div/input
+
+4) Ancestor : 
+
+1. //input[@id='txtUsername4']/ancestor :: form
+2. //input[@id='txtUsername4']/ancestor :: *	(div selected)
+
+
+5) Descendent :
+
+1.   //form[@id='formUsername1']/descendent :: input[1]	(1st txtUsername4 selected)
+2.  //input[@id='txtUsername4']/descendent :: *		(all descendent)
+3.  // form[@id='formUsername1']//input		(/ instead of ::)
+
+6) following : below self tag
+
+<form id="formusername">
+    <div  id="divUsername1">
+          <input id="txtUsername1"> </input>
+          <input id="txtUsername2"> </input>
+    </div>
+    <div  id="divUsername2">
+          <input id="txtUsername3"> </input>	-> self
+          <input id="txtUsername4"> </input>
+    </div>
+   <div  id="divUsername3">
+          <input id="txtUsername5"> </input>
+          <input id="txtUsername6"> </input>
+    </div>
+</form>
+	
+<input id="txtUsername3"> </input>	-> self
+
+1.  //input[@id='txtUsername3']//following :: input      (1st 'txtUsername4 selected)
+2. //input[@id='txtUsername3']//following :: *	       (all following tags)
+3. //input[@id='txtUsername3']//following :: input[2]   (2nd 'txtUsername5 selected)
+
+
+7) presceding : above self tag
+
+<input id="txtUsername4"> </input>	-> self
+
+1.  //input[@id='txtUsername4']//preceding :: input      (1st 'txtUsername3 selected)
+2. //input[@id='txtUsername4']//preceding :: *	       (all preceding tags)
+3. //input[@id='txtUsername4']//preceding :: input[2]   (2nd 'txtUsername1 selected)
+
+
+8) following-sibling : 
+
+<form id="formusername">
+    <div  id="divUsername">
+          <input id="txtUsername"> </input>	-> self
+          <span id="spanUsername"> username </span>
+    </div>
+</form>
+
+1.  // * [@id='txtUsername']/following-sibling :: span	("spanUsername" selected)
+2. // * [@id='txtUsername']/following-sibling :: *	
+
+
+9) preceding-sibling : 
+
+<span id="spanUsername"> username </span>	-> self
+
+1.  // * [@id='spanUsername']/preceding-sibling :: input	("txtUsername" selected)
+2. // * [@id='spanUsername']/preceding-sibling :: *	
+
+
+
+
+

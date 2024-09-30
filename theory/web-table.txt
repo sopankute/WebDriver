@@ -1,0 +1,37 @@
+Web Tables
+----------
+
+1.  Static web table
+2. Dynamic web table
+3. Table with pagination
+
+
+rows and columns
+To access only all Rows data in table not header <th>
+//table[@name='BookTable']//tr["+rows+"]//td["+columns+"]	
+
+
+Dynamic table with pagination - table has no of pages
+----------------------------
+
+To find total no of pages
+------------------------
+String str = "Showing 1 to 10 of 19081 (1909 Pages)"
+
+str.substring( str.indexOf( "(" ) + 1 ,  str.indexOf( "Pages" ) - 1)  --> 1909
+	      ------------------ , -----------------------
+
+find out the pagination element xpath
+
+//ul[@class='pagination']//*[text()="+p+"] --> int p is variable for pages
+
+using WebElement perform click()
+
+then try read data from table 
+- count rows, columns
+
+
+
+
+
+

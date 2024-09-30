@@ -1,0 +1,71 @@
+Date pickers
+------------
+
+1) To select perticular date on Calender
+------------------------------------
+
+eg. 10/November/2025
+
+  1. access month and year using while{ if{} condition }after click next or prev button.
+  2. access date
+
+xpath
+
+  1. Represent all the no of cell in datepicker 7 * 5 = 35
+   //table[@class='ui-datepicker-calendar']//tbody//tr//td
+
+  2. Represent all the actual dates in datepicker
+   //table[@class='ui-datepicker-calendar']//tbody//tr//td//a
+
+=======================================================
+
+2) To select perticular month and day on Calender and Year on Dropdow
+-------------------------------------------------------------------
+1.  //select[@class='ui-datepicker-year'] - click on dropdown
+
+2. Select()	- pass element to Select class
+
+3. call method like selectByVisibleText(year) Select class instance.
+
+
+ 15 November 2023
+
+choose month - Logic 
+-------------
+
+expected_month = November
+live_month = September
+
+       July	             September       November
+expected_month < live_month < expected_month 	
+       Past	               Current	      Future
+
+expected_month < live_month	--> Past
+live_month < expected_month 	--> Future 
+
+Need to convert String to java.time.Month object
+
+create method which has return type Month and parameter String keymonth
+use HashMap<key, value> 
+value will be Month Object eg. ("January", Month.JANUARY)
+access value using get(key) method
+and return it.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

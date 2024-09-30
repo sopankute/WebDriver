@@ -1,0 +1,124 @@
+Mouse Hover Action
+
+hover		--> moveToElement(WebElement1)
+right click		--> contextClick(button)
+double click	--> doubleClick()
+single click	--> dragAndDrop(srcElement, destElement)
+
+can be hadle by Action class
+---------------------------
+
+ Actions act = new Actions(driver);
+             act.moveToElement(WebElement1) 	1st hover
+	.moveToElement(WebElement2)	2nd hover
+	.click()				cliked action
+	.build()				create action
+	.perform()				perform action
+
+  only perform() method can be used instead of build().perform();
+
+
+Action and Actions
+
+Actions	- Class, used to perform mouse actions
+Action	- Interface, used to store created action and action can be performed when needed
+
+ Actions act = new Actions(driver); 
+ Action myaction = act.doubleClick.build()	- action stored
+ ....
+ ....
+ myaction.perform()			- performed action as needed
+
+
+-----------------------------------
+<p>inner text</p>   [ getText() - always captured inner text of element ]
+
+<input value="welcome"></input>	[getAttribute(value) - will return 'welcome' value of value]
+
+getText() vs getAttribute(value)
+
+
+===================================================
+Sliders | Keyboards | Tabs | Windows
+
+Sliders
+-------
+
+WebElement method
+
+element.getLocation() - return (+/- x, +/- y) coordinate
+
+
+ To drag element on x-axis
+ Actions act = new Action(driver);
+act.dragAndDropBy(element, 100, y)	
+--> new point will be (x+100, y)
+
+
+Keyboards
+----------
+use Actions and Kays class
+
+1) Ctrl+A	- Select all text
+	act.keyDown(Keys.CONTROL).sendKeys("A").keyUp(Keys.CONTROL).perform();
+
+2) Ctrl+C	- copy selected text
+	act.keyDown(Keys.CONTROL).sendKeys("C").keyUp(Keys.CONTROL).perform();
+
+3) Tab	- shift 2nd box
+	act.keyDown(Keys.CONTROL).keyUp(Keys.CONTROL).perform();
+
+4) Ctrl+V	- paste copied text
+	act.keyDown(Keys.CONTROL).sendKeys("V").keyUp(Keys.CONTROL).perform();
+
+
+Chrome Tabs
+------------
+use Actions and Keys
+
+1) Ctrl + click - open link in new tab
+	act.keyDown(Keys.CONTROL).click(element).keyUp(Keys.CONTROL)
+	- still driver focus on parent page
+
+
+Wondow
+--------
+
+driver.get("link1")
+driver.get("link2")
+
+ To open 2 links using same driver in different two Tab (selenium 4.x)
+// driver.get("link1")
+//  driver.switchTo().newWindow(WindowType.TAB)
+// driver.get("link2")
+
+
+To open 2 links using same driver in different two Windows
+// driver.get("link1")
+//  driver.switchTo().newWindow(WindowType.WINDOW)
+// driver.get("link2")
+
+driver will focus on 2nd window
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
